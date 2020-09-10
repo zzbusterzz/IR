@@ -225,9 +225,14 @@ public class Runtime {
                     words[i] = "";
                 } else {
                     if(b1 == "" || oper == ""){
-                        b1 = cWord;
-                        if(i < words.length -1)
-                            words[i] = "";
+                        if(cWord.equals("OR")){
+                            words[i - 1] = b1;
+                            b1 = "";
+                        }else{
+                             b1 = cWord;
+                            if(i < words.length -1)
+                                words[i] = "";
+                        }
                     }else{
                      
                         b2 = cWord;//No operand found between words then return result as null
@@ -242,7 +247,7 @@ public class Runtime {
                         if(oper == "AND"){
                             String andString = "";
                             for(int  j = 0; j < b1.length(); j++){
-                                if((b1.charAt(j) == b2.charAt(j)) && (b1.charAt(j) == '1')){
+                                if(b1.charAt(j) == b2.charAt(j) && b1.charAt(j) == '1'){
                                     andString += '1';
                                 }else
                                     andString += '0';
@@ -299,7 +304,7 @@ public class Runtime {
                             String orString = "";
                             for(int  j = 0; j < b1.length(); j++){
                                 //For or condition to hold true we need both condition where both values of 0 should give back 0
-                                if((b1.charAt(j) == b2.charAt(j)) && (b1.charAt(j) == '0')){
+                                if(b1.charAt(j) == b2.charAt(j) && b1.charAt(j) == '0'){
                                     orString += '0';
                                 }else
                                     orString += '1';
@@ -329,7 +334,10 @@ public class Runtime {
 //1) Goa AND state  -> 110000
 //2) Goa AND is NOT state -> 001100
 //3) Goa AND state AND (South AND western) -> 100000
-//4) Goa AND NOT( state AND India)
+//4) Goa AND NOT( state AND India) -> ????????
 //5) Goa AND NOT(state AND India) -> 011100
 //6) Maharashtra AND NOT(state AND India) -> 010001
-//7) 
+//7) Maharashtra AND NOT(state OR India) -> 000001
+//8) Goa OR Maharashtra -> 111111
+//9) Goa AND (state AND India) -> 100000
+//10) Goa AND NOT NOT(state AND India) -> 100000
