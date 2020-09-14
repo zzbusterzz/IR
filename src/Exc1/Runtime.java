@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package informationretrieval.Exc1;
+package Exc1;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,8 +27,6 @@ public class Runtime {
         Scanner sc = new Scanner(System.in);        
         
         boolean run = true;
-        
-        
         
         while(run){
              System.out.println("Enter Query(Type Exit to escape)");

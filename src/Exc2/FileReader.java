@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package informationretrieval.Exc1;
+package Exc2;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class FileReader {
 
-    public String folderPath = "D:/IR";
+    public String folderPath = "D:/IR/Exc2";
 
     long fileCount = 0;
     public List<String> fileNames;

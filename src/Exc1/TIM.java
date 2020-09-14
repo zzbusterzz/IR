@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package informationretrieval.Exc1;
+package Exc1;
 
 import java.io.IOException;
 import java.nio.file.Files;
