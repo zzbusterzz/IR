@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Exc2;
+package Porters;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -41,7 +41,7 @@ public class Runtime {
                     Set<Integer> docID = new HashSet<>();
                     
                     for(int i = 0; i < keywords.length; i++){
-                        List<Integer> postList = invMat.returnPostingList( keywords[i] );
+                        List<Integer> postList = invMat.returnPostingList( PortersStemming.stemedWord(keywords[i]) );
                         for(int j = 0;  j < postList.size(); j++){
                             docID.add(postList.get(j));
                         }
