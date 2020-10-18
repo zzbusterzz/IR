@@ -32,6 +32,7 @@ public class Runtime {
              System.out.println("Enter Query(Type Exit to escape)");
              if(sc.hasNextLine()){
                 String input= sc.nextLine();
+                input = input.toLowerCase();
                 if(input.equalsIgnoreCase("Exit")){
                     run = false;
                 }else{
@@ -42,9 +43,10 @@ public class Runtime {
                     
                     for(int i = 0; i < keywords.length; i++){
                         List<Integer> postList = invMat.returnPostingList( keywords[i] );
-                        for(int j = 0;  j < postList.size(); j++){
-                            docID.add(postList.get(j));
-                        }
+                        if(postList != null)
+                            for(int j = 0;  j < postList.size(); j++){
+                                docID.add(postList.get(j));
+                            }
                     }
                     
                     String fileNames = "";

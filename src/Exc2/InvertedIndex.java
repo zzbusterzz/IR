@@ -70,9 +70,9 @@ public class InvertedIndex {
                          String[] content = lines.get(i).split(" "); //Split the string based on whitespace
                         for(int j = 0; j < content.length; j++){
                             if(!stopWords.contains(content[j].toLowerCase()) ){//Removed stopwords
-                                AddEntry(info, content[j], file);
+                                AddEntry(info, content[j].toLowerCase(), file);
                             }
-                            AddEntry(infoWithStopWords, content[j], file);//Stopwords included
+                            AddEntry(infoWithStopWords, content[j].toLowerCase(), file);//Stopwords included
                         }
                     }
                 } 
