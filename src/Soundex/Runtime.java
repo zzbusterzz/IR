@@ -31,6 +31,8 @@ public class Runtime {
              System.out.println("Enter Query(Type Exit to escape)");
              if(sc.hasNextLine()){
                 String input= sc.nextLine();
+                input= input.toLowerCase();
+                
                 if(input.equalsIgnoreCase("Exit")){
                     run = false;
                 }else{

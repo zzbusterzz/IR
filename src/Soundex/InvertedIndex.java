@@ -65,8 +65,9 @@ public class InvertedIndex {
                     List<String> lines = Files.readAllLines(folderPath.resolve(file));
                     
                     for(int i =0; i < lines.size(); i++){
-                         String[] content = lines.get(i).split(" "); //Split the string based on whitespace
+                        String[] content = lines.get(i).split(" "); //Split the string based on whitespace
                         for(int j = 0; j < content.length; j++){
+                            content[j] = content[j].toLowerCase();
                             AddEntry(soundex, GetSoundex(content[j]), content[j]);
                             AddEntry(invertedIndex, content[j], file);//Current words
                         }

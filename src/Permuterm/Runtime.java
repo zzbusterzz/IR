@@ -7,7 +7,6 @@ package Permuterm;
 
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -32,6 +31,7 @@ public class Runtime {
              System.out.println("Enter Query(Type Exit to escape)");
              if(sc.hasNextLine()){
                 String input= sc.nextLine();
+                input = input.toLowerCase();
                 if(input.equalsIgnoreCase("Exit")){
                     run = false;
                 }else{

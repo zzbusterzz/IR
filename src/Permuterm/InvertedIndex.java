@@ -67,7 +67,7 @@ public class InvertedIndex {
                     for(int i =0; i < lines.size(); i++){
                          String[] content = lines.get(i).split(" "); //Split the string based on whitespace
                         for(int j = 0; j < content.length; j++){
-                            
+                            content[j] = content[j].toLowerCase();
                             String word =  content[j] + "$";
                             AddEntry(permuterm, word, content[j]);
                             for(int k = 0; k < word.length(); k++){
@@ -206,11 +206,13 @@ public class InvertedIndex {
             }
            
         }else{
-            String[] starSplit = word.split("*");
+            String[] starSplit = word.split("\\*");
             
             int star_pos = word.indexOf("*");
+            int star_pos_W2 = word.lastIndexOf("*");
+            
             String word1 = word.substring(0, star_pos + 1);
-            String word2 = word.substring(star_pos+1, word.length());
+            String word2 = word.substring(star_pos_W2+1, word.length());
             String termRot = word2 + word1;
             
             Enumeration<String> keys =  permuterm.keys();
@@ -234,9 +236,10 @@ public class InvertedIndex {
             {
                 Iterator it = set.iterator();
                 while(it.hasNext()){
-                    String val = (String) it.next();
+                    String val = (String) it.next() + "$";
                     val = val.replaceFirst(starSplit[0], "");
                     int lastind = val.lastIndexOf(starSplit[starSplit.length - 1]);
+                    if(lastind == -1) return null;
                     val = val.substring(0, lastind);
                     boolean remove = false;
                     for(int i = 1; i < starSplit.length - 1; i++)
