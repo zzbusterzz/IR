@@ -65,7 +65,7 @@ public class InvertedIndex {
                         for(int j = 0; j < content.length; j++){
                             
                              // if(!stopWords.contains(content[j].toLowerCase()) ){//Add Porters stemmer
-                            String word =  content[j];
+                            String word =  content[j].toLowerCase();
                              
                                 AddEntry(infoPoters, PortersStemming.stemedWord(word), file);
                           //  }
