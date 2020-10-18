@@ -32,6 +32,60 @@ public class Runtime {
              System.out.println("Enter Query(Type Exit to escape)");
              if(sc.hasNextLine()){
                 String input= sc.nextLine();
+                
+                if(input.equalsIgnoreCase("Exit"))
+                {
+                    run = false;
+                    continue;
+                }
+                //clears extra spaces after brackets so
+                String updatedInput = "";
+                
+                boolean isPrevBracket = false;
+                boolean isEmptySpace = false;
+                
+                for(int  i = 0; i < input.length(); i++){
+                    char c = input.charAt(i);
+                    
+                    if(c == ' ' && !isPrevBracket && !isEmptySpace){
+                        isEmptySpace = true;
+                        updatedInput += c;
+                        continue;
+                    }
+                    
+                    if( c == '('  && !isPrevBracket){
+                        isPrevBracket = true;
+                        updatedInput += c;
+                        continue;
+                    }
+                    
+                    if(isPrevBracket){
+                        if(c != ' '){
+                            updatedInput += c;//Removed whitespace after bracket
+                            isPrevBracket = false;
+                        }
+                    }
+                    else if(isEmptySpace){
+                        if(c != ' '){
+                            if(c == ')'){
+                                updatedInput = updatedInput.trim();
+                                updatedInput += c;
+                            }
+                            else
+                            {
+                                updatedInput += c;//Removed whitespace after bracket
+                                isEmptySpace = false;
+                            }
+                        }
+                    }
+                    else{
+                        updatedInput += c;
+                    }
+                }
+                
+                System.out.println(updatedInput);
+                input = updatedInput;
+                
                 if(input == "Exit"){
                     run = false;
                 }else{
@@ -150,10 +204,8 @@ public class Runtime {
                                 
                                 String outVec = ProcessBoolean(sb.toString());
                                 
-                                if(outVec == null)
-                                        break;
-                                
-                                System.out.println("Result is :" + outVec);
+                                if(outVec != null)
+                                    System.out.println("Result is :" + outVec);
                             }else{
                                 System.out.println("In equal brackets query found, recheck and add new query");
                             }
@@ -162,7 +214,12 @@ public class Runtime {
                         }
                     } 
                     else{
+                        input = input.trim();
+                        String vword = tdm.returnVector(input);
+                        if(vword == null )
                             System.out.println("Incorrect Query, Please enter a proper query");
+                        else                            
+                            System.out.println("Result is : " + vword);
                     }
                 }
              }
@@ -173,6 +230,12 @@ public class Runtime {
         String[] words = data.split(" ");
         
         int notcounter = 0;
+        
+        if(words[words.length - 1].equals("NOT") )//last Word is not
+        {
+            System.out.println("Invalid Query, Please renter proper query");
+            return null;
+        }
         
         for(int i = 0; i < words.length; i++){//To handle single or multiple nots
             if(!words[i].equals("")){
@@ -205,6 +268,8 @@ public class Runtime {
             }
         }
         
+        
+      
              
         String b1 = "";
         String b2 = "";
