@@ -223,17 +223,18 @@ public class VSMData {
             Map.Entry m  = (Map.Entry)itr.next();
             CosineData data = (CosineData) m.getValue();
             for(int i = 0; i < data.tfNormalised.length - 1; i++){
-                D_Q[i] +=  data.tfNormalised[i] * data.tfNormalised[lastIndex];
+                D_Q[i] +=  data.tfNormalised[i] * data.tfNormalised[lastIndex] ;
             }
         }
         
         List<Double> indexMap = new ArrayList<>();
         for(int i = 0; i < D_Q.length; i++){
-            indexMap.add(D_Q[i]);
-            System.out.println("Similarity Coefficient for D"+i + ",Q = "+D_Q[i]);
+            D_Q[i] = Math.toDegrees( Math.acos(D_Q[i]) );
+            indexMap.add( D_Q[i]);
+            System.out.println("Similarity Coefficient for D"+(i+1) + ",Q = "+D_Q[i]);
         }
         
-        Arrays.sort(D_Q, Collections.reverseOrder()); 
+        Arrays.sort(D_Q); 
         
         String order = "";
         

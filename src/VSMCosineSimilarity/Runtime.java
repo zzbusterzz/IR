@@ -58,3 +58,18 @@ public class Runtime {
          }
     }
 }
+
+
+///Output
+//File Count : 6
+//Total Files in directory : 6
+//Completed Till Normalisation
+//Enter Query(Type Exit to escape)
+//gold silver truck
+//Successfully wrote to the file.
+//Successfully wrote to the file.
+//Successfully wrote to the file.
+//Similarity Coefficient for D1,Q = 77.39561735162083
+//Similarity Coefficient for D2,Q = 61.380801118568236
+//Similarity Coefficient for D3,Q = 64.1233099391725
+//D2.txt > D3.txt > D1.txt
