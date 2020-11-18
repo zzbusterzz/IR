@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class FileReader {
 
-    public String folderPath = "D:/IR/Exc6_";
+    public String folderPath = "C:/IR/Exc6";
 
     long fileCount = 0;
     public List<String> fileNames;
