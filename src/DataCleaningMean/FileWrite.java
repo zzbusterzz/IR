@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author 1
  */
 public class FileWrite {
-  public FileWrite(String fileName, String data){
+  public static void Write(String fileName, String data){
     try {
       FileWriter myWriter = new FileWriter(fileName);
       myWriter.write(data);

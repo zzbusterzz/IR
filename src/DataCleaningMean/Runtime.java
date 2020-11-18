@@ -18,7 +18,7 @@ import org.apache.commons.lang3.math.NumberUtils;
  * @author KillerMech
  */
 public class Runtime {
-    //Defines
+    //Defines columns type
     enum ColumnType{
         NUMERIC,
         STRING,
@@ -52,13 +52,13 @@ public class Runtime {
         try   
         {  
             //Reads the csv file using buffer reader
-            BufferedReader br = new BufferedReader(new FileReader("C:\\IR\\New folder\\dataset_38_sick.csv"));  
+            BufferedReader br = new BufferedReader(new FileReader("C:\\IR\\Exc9\\dataset_38_sick.csv"));  
             while ((line = br.readLine()) != null)   //Read each line
             {  
                 String[] val = line.split(splitBy);    // use comma as separator  
                 if(recNo == 0){//If first line is read then save all the values we recieved as keys and initialise arrays
                     for(int j = 0; j < val.length; j++){//Iterate all columns/attrib
-                        map.put(val[j], new ArrayList<String>());
+                        map.put(val[j], new ArrayList<>());
                         attribType.put(val[j], ColumnType.UNKNOWN);//init mapped attrib type to unknown
                         meanMap.put(val[j], new MeanCalc());//init mean map
                         keyPosition.add(val[j]);
@@ -133,6 +133,6 @@ public class Runtime {
             data +="\n";//Add new line after every iteration
         }
         
-        new FileWrite("C:\\IR\\New folder\\CleanedData.csv",data );//Use the file writer class to write data to file
+        FileWrite.Write("C:\\IR\\Exc9\\CleanedData.csv",data );//Use the file writer class to write data to file
     }  
-} 
+}
