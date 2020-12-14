@@ -80,8 +80,6 @@ public class Runtime {
                             if(NumberUtils.isParsable(val[j])){//check for each column in the row if it is Numeric 
                                 if(attribType.get(key) == ColumnType.UNKNOWN)///If attribType of column is Unknown make it numeric
                                     attribType.put(key, ColumnType.NUMERIC);
-                                
-                                
                             }else{
                                 attribType.put(key, ColumnType.STRING);//If value is string then change column type here
                             }
@@ -104,6 +102,7 @@ public class Runtime {
             if(attribType.get(key) == ColumnType.NUMERIC){//If its a numeric column then start for loop, check for any missing values and add it to mean
                 List<String> data = map.get(key);
                 
+                //Create Entry set to store mapping of row index to column value
                 HashMap<Integer, String> clone = new HashMap<>();
                 
                 for(int x = 0; x < data.size(); x++){
@@ -128,7 +127,8 @@ public class Runtime {
                     sortedHashMap.put(entry.getKey(), entry.getValue());  
                 }
                 
-                clone = sortedHashMap;
+                clone = null;//Deallocate old hashmap                
+                clone = sortedHashMap;//Reassign the new sorted hashmap on that variable
                 
                 int count = 0;
                 float mean = 0;
